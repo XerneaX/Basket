@@ -2,7 +2,7 @@
   "name": "basket",
   "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "xerCess <gakbal112@gmail.com>",
+  "author": "gakbal <gakbal112@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
