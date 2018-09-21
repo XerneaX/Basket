@@ -14,8 +14,8 @@
 
     <br><br>
     <div class="progress">
-      <div class="progress-bar bg-info" role="progressbar" :style="{width:loadProduct+'%'}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-        /10
+      <div class="progress-bar bg-info" role="progressbar" :style="{width:loadProductPercent+'%'}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+       {{loadProduct}}/10
       </div>
     </div>
     <br><br>
@@ -46,6 +46,7 @@
       },
     data() {
       return {
+        loadProductPercent: 0,
         loadProduct: 0,
         productList: [],
         product : {
@@ -58,12 +59,17 @@
     },
      created(){debugger;
           eventBus.$on("productSend", (product)=>{
-              this.productList.push(product);
+              if(this.productList.length <10)
+                this.productList.push(product);
+              else
+                  alert("You can add only 10 product");
           })
      },
    watch:{
           productList(value){debugger;
-              this.loadProduct = value.length * 10;
+              let size = value.length;
+              this.loadProduct = size;
+              this.loadProductPercent = size * 10;
           }
    }
   }
